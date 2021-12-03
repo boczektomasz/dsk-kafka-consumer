@@ -17,7 +17,8 @@ public class ConsumerDemo {
 
         final Logger logger = LoggerFactory.getLogger(ConsumerDemo.class.getName());
 
-        String bootstrapServer = "127.0.0.1:9092";
+        // When Kafka running locally in Docker use "127.0.0.1:9092"
+        String bootstrapServer = "172.21.202.252:9092,172.21.83.196:9092,172.21.194.161:9092";
         String gorup_id = "my_group_id";
         String topic = "first_topic";
 
