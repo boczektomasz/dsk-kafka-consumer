@@ -15,14 +15,15 @@ import java.util.Properties;
 
 public class ConsumerService {
 
-    public static void consume() {
+    public static void consume(String bootstrapServer, String topic) {
 
         final Logger logger = LoggerFactory.getLogger(ConsumerService.class.getName());
 
         // When Kafka running locally in Docker use "127.0.0.1:9092"
-        String bootstrapServer = "127.0.0.1:9092"; // "172.21.202.252:9092,172.21.83.196:9092,172.21.194.161:9092";
+        // String bootstrapServer = "127.0.0.1:9092"; //
+        // "172.21.202.252:9092,172.21.83.196:9092,172.21.194.161:9092";
         String gorup_id = "my_group_id";
-        String topic = "first_topic";
+        // String topic = "first_topic";
 
         // create consumer configs
         Properties props = new Properties();
