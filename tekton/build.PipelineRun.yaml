@@ -1,0 +1,21 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: build-pipeline-run-
+spec:
+  params:
+    - name: source-repo
+      value: https://github.com/levandreev/kafka-producer
+    - name: image-repo
+      value: image-registry.openshift-image-registry.svc:5000/confluent/kafka-producer
+  pipelineRef:
+    name: build-pipeline
+  workspaces:
+    - name: pipeline-shared-data
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 1Gi
+          accessModes:
+            - ReadWriteOnce
