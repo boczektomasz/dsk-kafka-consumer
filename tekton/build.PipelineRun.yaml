@@ -5,11 +5,11 @@ metadata:
 spec:
   params:
     - name: source-repo
-      value: https://github.com/levandreev/kafka-producer
+      value: https://github.com/levandreev/kafka-consumer
     - name: image-repo
-      value: image-registry.openshift-image-registry.svc:5000/confluent/kafka-producer
+      value: image-registry.openshift-image-registry.svc:5000/confluent/kafka-consumer
   pipelineRef:
-    name: build-pipeline
+    name: build-pipeline-consumer
   workspaces:
     - name: pipeline-shared-data
       volumeClaimTemplate:
