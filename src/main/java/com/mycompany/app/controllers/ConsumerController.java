@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ConsumerController {
 
     @GetMapping("/api/consume")
-    public String loadPage( Model model) {
+    public String loadPage(Model model) {
         return "consume";
     }
 
     @GetMapping("/api/consume/consume-message")
     public String consumeMessage(Model model) {
-        String message = ConsumerService.consume();
+        String message = "ConsumerService.consume()";
         model.addAttribute("message", message);
         return "consume";
     }

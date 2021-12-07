@@ -15,13 +15,12 @@ import java.util.Properties;
 
 public class ConsumerService {
 
-    public static String consume(){
-
+    public static void consume() {
 
         final Logger logger = LoggerFactory.getLogger(ConsumerService.class.getName());
 
         // When Kafka running locally in Docker use "127.0.0.1:9092"
-        String bootstrapServer = "127.0.0.1:9092"; //"172.21.202.252:9092,172.21.83.196:9092,172.21.194.161:9092";
+        String bootstrapServer = "127.0.0.1:9092"; // "172.21.202.252:9092,172.21.83.196:9092,172.21.194.161:9092";
         String gorup_id = "my_group_id";
         String topic = "first_topic";
 
@@ -39,21 +38,15 @@ public class ConsumerService {
         // subscribe consumer to topic
         consumer.subscribe(Collections.singleton(topic));
 
-
-        StringBuilder sb = new StringBuilder();
-
         // poll for new data
-        ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
-        for (ConsumerRecord<String, String> record : records) {
-            sb.append("Key:" + record.key());
-            sb.append("\n");
-            sb.append("Value:" + record.value());
-            sb.append("\n");
-            sb.append("Partition:" + record.partition());
-            sb.append("\n");
-            sb.append("Offset:" + record.offset());
+        while (true) {
+            ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
+            for (ConsumerRecord<String, String> record : records) {
+                logger.info("Key:" + record.key());
+                logger.info("Value:" + record.value());
+                logger.info("Partition:" + record.partition());
+                logger.info("Offset:" + record.offset());
+            }
         }
-
-        return sb.toString();
     }
 }
