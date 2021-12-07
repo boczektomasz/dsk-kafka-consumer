@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+<div class="container" style="background-color: #E5E5E5; margin: 5rem; padding: 1rem">
+    <h4 style="text-align: center; padding-bottom: 2rem;">Consume messages</h4>
+
+    <form style="text-align: center" action="/api/consume/consume-message">
+        <input class="btn btn-success" type="submit" value="Consume message" />
+    </form>
+
+    <!--/*@thymesVar id="message" type="string"*/-->
+    <p style="text-align: center; padding-top: 2rem" th:text="'Message: ' + ${message}" />
+
+</div>
+</body>
+</html>
