@@ -1,12 +1,14 @@
-FROM maven:3.6.0-jdk-11-slim AS build
-COPY src /home/app/src
-COPY pom.xml /home/app
-RUN mvn -f /home/app/pom.xml clean package
+FROM gradle:7.3.1-jdk11-alpine AS build
+COPY --chown=gradle:gradle . /home/gradle/src
+WORKDIR /home/gradle/src
+RUN gradle build --no-daemon
 
-#
-# Package stage
-#
 FROM openjdk:11-jre-slim
-COPY --from=build /home/app/target/kafka-consumer-1.0.jar /usr/local/lib/kafka.jar
-# EXPOSE 8080
-ENTRYPOINT ["java","-jar","/usr/local/lib/kafka.jar"]
+
+EXPOSE 8080
+
+RUN mkdir /app
+
+COPY --from=build /home/gradle/src/build/libs/kafka-consumer-1.0.jar /app/spring-boot-application.jar
+
+ENTRYPOINT ["java","-jar","/app/spring-boot-application.jar"]
