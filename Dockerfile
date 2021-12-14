@@ -1,7 +1,7 @@
 FROM gradle:7.3.1-jdk11-alpine AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
-RUN gradle build --no-daemon
+RUN gradle build --no-daemon --scan
 
 FROM openjdk:11-jre-slim
 
