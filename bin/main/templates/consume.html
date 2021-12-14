@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+<div class="container" style="background-color: #E5E5E5; margin: 5rem; padding: 1rem">
+    <h4 style="text-align: center; padding-bottom: 2rem;">Consume messages</h4>
+
+    <form style="padding-bottom: 2rem; text-align: center" action="/api/consume/consume-message">
+        <input class="btn btn-success" type="submit" value="Get message" />
+    </form>
+
+
+    <table class="table" style="align-items: center; padding-top: 2rem">
+        <thead>
+        <tr>
+            <th scope="col">Key</th>
+            <th scope="col">Value</th>
+            <th scope="col">Partition</th>
+            <th scope="col">Offset</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><p th:text=" ${key} " /></td>
+            <td><p th:text=" ${value} " /></td>
+            <td><p th:text=" ${partition} " /></td>
+            <td><p th:text=" ${offset} " /></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
