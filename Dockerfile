@@ -2,7 +2,8 @@ FROM gradle:7.3.1-jdk11-alpine AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN printenv
-RUN gradle build --no-daemon --scan --debug -Dhttp.proxyHost=192.168.0.150 -Dhttp.proxyPort=8080 -Dhttps.proxyHost=192.168.0.150 -Dhttps.proxyPort=8080
+
+RUN gradle build --no-daemon --scan --debug
 
 FROM openjdk:11-jre-slim
 
