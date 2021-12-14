@@ -4,10 +4,6 @@
 
 rootProject.name = 'kafka-consumer'
 
-plugins {
-    id "com.gradle.enterprise" version "3.7.2"
-}
-
 gradleEnterprise {
     server = "https://gradle-enterprise.mycompany.com"
 }
