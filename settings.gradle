@@ -3,7 +3,3 @@
  */
 
 rootProject.name = 'kafka-consumer'
-
-gradleEnterprise {
-    server = "https://gradle-enterprise.mycompany.com"
-}
