@@ -3,7 +3,7 @@ COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN printenv
 
-RUN gradle build --no-daemon --scan --debug
+RUN gradle build --no-daemon --scan --debug -Dhttp.proxyHost=192.168.0.150 -Dhttp.proxyPort=8080 -Dhttps.proxyHost=192.168.0.150 -Dhttps.proxyPort=8080
 
 FROM openjdk:11-jre-slim
 
